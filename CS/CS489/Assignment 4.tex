@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Assignment \#4}
+\newcommand{\DueDate}{November 12, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS489}
+\newcommand{\CourseInstructor}{Prof. Shin Yoo}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Question}{Write a 500 $\sim$ 1,000 words essay that either supports or rejects the following statement: “social networking and automated contents recommendation are making people more radical”. Your essay should explicitly state your view.}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Computer Ethics \& Social Issues \\ \hwTitle}
+	\author{\textbf{The Radicalizing Effects of Internet Services} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\large \textbf {Q. \Question}
+	
+	\vspace{3ex}
+	
+	Last month, I used 15.42 GB of mobile data. In decreasing order, I spent my data on YouTube (5.15 GB), Netflix (3.65 GB), Facebook (3.21 GB), and Twitter(898MB). So practically, most of my phone usage is related to ``social networking and automated contents recommendation'' services. I first heard the argument at a lecture of this course, that those services are making people more radical, and I couldn't agree more.
+	
+	I noticed that platforms customize contents recommendation to my taste. I know that people I communicate with share similar backgrounds and perspectives. And I admit that even while I'm conscious, these internet services can (and will) alter me to a more radical person.
+	
+	I will now elaborate on the three points above. In advance, I'd like to state that I referred to the course material we used on September 17th\cite{course}. We've discussed this topic in class, and most of my reasons appear on \cite{course}. (I hence brought some of the references and terminologies from the material.) However, I'd also like to note that I tried to take a step further. I didn't want my essay to be a mere summary of that day's discussion, so I added extra references and personal experiences. I also tried to think of how we can cope with the situation.
+	
+	My first point is that automated recommendation algorithms are designed to make people more radical. Guillaume Chaslot, an ex-YouTube engineer who worked on the recommender system algorithm, said that ``the recommendation algorithm is not optimizing for what is truthful, or balanced, or healthy for democracy. Watch time was the priority. Everything else was considered a distraction.'' The algorithm aims to hold on to the users. The ``platforms'' are no charities - they need users to linger so that they can sell advertisements and maintain subscribers. People tend to be attracted to contents that agree to one's ideas. The algorithm designedly recommends such supporting contents, resulting in users to be more convinced of their perspectives.
+	
+	Moreover, they expose more extreme, incendiary contents. It has argued in Tufekci's article in detail that the YouTube recommendation algorithm presents more arousing videos \cite{tufecki}. For instance, I've also experienced a heightening series of recommendations quite recently. My friend told me that a new trailer for a game\footnote{"Overwatch" by Blizzard Entertainment} is well-made. I looked it up on YouTube, and indeed the trailer showed high cinematic quality. Then YouTube recommended a related gameplay video and so on. I ended up watching the finals of this year's game competition. I don't even play the game, yet YouTube has managed to lure me having more interest and enthusiasm about the subject. 
+	
+	Second, we get surrounded by similarly-minded people in social networking services. The terms ``friends'' of Facebook, ``followings/followers'' of Twitter indicate it plainly. These people are often real-world friends or people whom I share interests. It seems natural, but there is a problem with this. We can't meet diverse ideas. People with shared ideologies form ``tribes,'' and each tribe acts as an echo chamber where familiar ideas repetitively reinforce one's beliefs. I can observe different tribes every day. On Twitter, I see radical feminists, liberals, vegans, and LGBTs. They constantly rephrase and amplify their common arguments with tweets and retweets. I have also positioned in various tribes, such as engineering students, science highschool graduates, and several more.
+	
+	Tribalism results in people gain certitude and neglect contradictions. Disputes offer a chance to examine ourselves. We can re-evaluate our morals and beliefs and become better people through healthy debates. Social networking services hinder this kind of development and lead people to become more radical. 
+	
+	Lastly, even though I am aware of the problems arising from the internet, I will never be free from them if I keep using those services. I know that the automated recommendation system tries to drag me to an extreme. I know I shouldn't be deluded by the sugar-coated approvals from my tribe. I can be cautious and maintain a critical attitude, but it doesn't mean I can stay unaffected by them. It is because of ``information overload\cite{gross}''.
+	
+	Borrowing the definition of Bertram Gross, ``information overload occurs when the amount of input to a system exceeds its processing capacity.'' According to YouTube Korea, 400 hours of video data gets uploaded on YouTube every minute\cite{usage}. It is physically impossible to assess all the information uploaded on the internet and make decisions. Even if so, there are always fake news, and I can't fact-check every information with my processing power and knowledge. I am destined to rely on unfair, radicalizing services.
+	
+	We are living in a world that 85\% of smartphone owners use the Facebook app\cite{facebook}. A survey says that 60\% of Koreans use YouTube as a search channel\cite{youtube}. I do believe that current internet services are leading people to become more radical beings. I can even say that it is inevitable. But the fact doesn't disturb me. I think it is okay for people to be hard-core. People can make their stances, and it doesn't always have to be neutral. Diversity is evidence of a healthy society. I love talking to people with different ideas, and I respect activists with concrete philosophy.
+	
+	Disagreement itself is not evil. What matters is the attitude. Of course, we should not be stubborn. We should always be ready to admit that we can be wrong and have an open mind in a discussion. It is important to maintain humanity and respect for others. That's why I believe social networking and automated contents recommendation services should have a strict policy towards malicious, hateful contents. The radicalizing effect is perhaps inevitable for internet services, but we should not let hatred infects and separates our society. Users and providers should all make responsible efforts to keep the internet clean.
+	
+	\newpage
+	
+	\begin{thebibliography}{9}
+		\bibitem{course} 
+		``Technology and Public Discourse'' KAIST CS489 lecture material \url{https://coinse.kaist.ac.kr/assets/files/teaching/2019/cs489/cs489-slide03.pdf}
+		\bibitem{tufecki}
+		Tufekci, Zeynep. “YouTube, the Great Radicalizer.” \textit{The New York Times}, The New York Times, 10 Mar. 2018, \url{www.nytimes.com/2018/03/10/opinion/sunday/youtube-politics-radical.html}.
+		\bibitem{gross}
+		Gross, Bertram, M. (1964). The Managing Organizations: The Administrative Struggle, vol 2. pp. 856ff.
+		\bibitem{usage}
+		박 태희. “1분마다 400시간 업로드되는 유튜브...구글은 어떻게 유튜브를 황금거위로 키웠나.” \textit{중앙일보}, 중앙일보, 1 Jan. 2019, \url{news.joins.com/article/23253498}.
+		\bibitem{facebook}
+		Dogtiev, Artyom.“Facebook Revenue and Usage Statistics (2018).” Business of Apps, 4 May 2018, \url{www.businessofapps.com/data/facebook-statistics/}.
+		\bibitem{youtube}
+		김 승한. “인터넷 이용자 60\% 유튜브 검색채널로 활용한다.” \textit{매일경제}, 14 Mar. 2019, \url{www.mk.co.kr/news/business/view/2019/03/152991/}.
+		
+	\end{thebibliography}
+\end{document}

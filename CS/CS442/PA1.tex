@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Programming Assignment \#1}
+\newcommand{\DueDate}{October 14, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{Weather forecast application develeopment}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{PA1.png}
+		\caption{Execution screen}
+		\label{fig:execution}
+	\end{figure}
+	
+	This is the captured screen of my implementation. From the top, I will describe what I implemented and how.
+	
+	\begin{enumerate}
+		\item Reload Button
+		\begin{itemize}
+			\item When pressed, request to update location and get weather and forecast information from the weather API. (I used \href{http://api.openweathermap.org}{api.openweathermap.org})
+			
+			\item I made two different AsyncTasks (getCurrentWeatherTask, getForecastTask) to get weather and forecast data from each API.
+			
+			\item The data were retrieved with HttpURLConnection. They were given in JSONObject format, so I had to parse them at onPostExecute function for each AsyncTask.
+			
+		\end{itemize} 
+	
+		\item Current weather
+		\begin{itemize}
+			\item API offers query by city name and location coordinates (latitude/longitude). I used location coordinates and got the city name from the data(“name” object).
+			
+			\item Data includes the timestamp of when they acquired the data in Unix time format, so I used Date() utility with SimpleDateFormat to express it. The thing is, I had to first set format’s timezone to GMT and adjust it by timezone data given by API. Otherwise, the time will be expressed in the device’s timezone setting, and it doesn’t change automatically when we change location.
+			
+			\item I displayed the weather condition (both in text and image), current temperature, humidity and the minimum \& maximum temperature of the current day. The minimum \& maximum temperature of the current day data is retrieved from the forecast API. When the current time is between 21:00 $\sim$ 24:00, the forecast API doesn’t today’s data. On such occasion, I used the minimum \& maximum temperature of the current moment, given by the weather API.
+			
+			\item I included 4 images for clear, cloudy, rainy, and snowy conditions for extra credit. The default image is the clear(sunny) image.
+		\end{itemize} 
+	
+		\item Hourly forecast
+		\begin{itemize}
+			\item Forecast API offers data of 3 hourly forecasts for the next 120 hours. I used 5 preceding objects from JSONArray(“list” object) to get time, weather conditions, temperature, and humidity information.
+		\end{itemize} 
+		
+		\item Daily forecast
+		\begin{itemize}
+			\item I calculated the index for the first data of the next day. Since a day is 24 hours and the interval of data is 3 hours, the starting index for the following day can be acquired by adding 8.
+			
+			\item I used condition image for the weather condition of 4th data for each day.
+			
+			\item I calculated the minimum and maximum value from temp\_min \& temp\_max data.
+			
+			\item I displayed average humidity for each day.
+		\end{itemize} 
+	\end{enumerate}
+
+	There are few (not mandatory) features I could have implemented but did not because of the upcoming midterm exam.
+	
+	\begin{itemize}
+		\item I could have differed ‘Clear’ condition image differently for day and night. (using sun image at daytime and moon image for night time.) Sunrise and sunset time were offered in forecast API, so I compare time with those data.
+		\item I could have differed condition images for more conditions since I could get more resources from the credited icon designer. 
+	\end{itemize} 	
+\end{document}

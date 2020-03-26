@@ -1,0 +1,121 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Assignment \#2}
+\newcommand{\DueDate}{November 24, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS489}
+\newcommand{\CourseInstructor}{Prof. Shin Yoo}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Question}{Write a 500~1,000 words essay after reading the following article: 
+	\href{https://www.theverge.com/2019/3/28/18285572/prison-labor-finland-artificial-intelligence-data-tagging-vainu}{Inmates in Finland are training AI as part of prison labor}.\cite{givenarticle} Your essay should explicitly state whether you support or disagree with the practice outlined in the article.}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Computer Ethics \& Social Issues \\ \hwTitle}
+	\author{\textbf{Treat inmates as ends, not as means} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\large \textbf {Q. \Question}
+	
+	\vspace{3ex}
+	
+	A Finnish startup called Vainu started a practice of training AI algorithms as part of prison labor. Participating inmates are demanded to do simple labeling tasks, such as determining articles whether if they are relevant to the business acquisition or similar desired topics. By this practice, Vainu can collect necessary data to train its algorithm at a low cost. The Criminal Sanctions Agency (CSA) also seems to welcome the partnership; since the labor has no risk of violence. The practice appears to be a 'win-win' - a safe, efficient collaboration over an emerging trend.
+	
+	However, It is not a win for the inmates. I do not support the practice for the following three reasons.
+	
+	First, It is no more than labor exploitation. 'Prison insourcing' has emerged to be a cheap option to reduce labor costs, but this has gone too far. The job is immensely underpaid. Another article says that Vainu could find only one participant to do the job on Mechanical Turk.\cite{futurism} I understand that it is difficult to find a Finnish volunteer on the English platform. But still, they could have gathered more people if they offered better payment. The prisoners are being paid a similar wage as on Mechanical Turk, which is reported to be a median wage of 2 dollars per hour. A research facility conducts comparable data collection with much better payment.
+	
+	As mentioned in the given article, prisons in Finland are very progressive. They allow prisoners to work outside the prison or remain self-employed in prison on certain conditions. Prisoners with vocational skills receive proper taxable wages for professional work.\cite{finland} Inmates should be encouraged to do that kind of work. Training AI is just too unrewarding; which leads to my next argument.
+	
+	Second, the job does not benefit the prisoners. Penal labor aims to mitigate recidivism risk by providing training and work experience to inmates.\cite{wiki} \footnote{This is from the Wikipedia article about penal labor in the United States, but I believe we can apply this to all prisons.} The purpose of prison labor is not punishment, but rehabilitation. Inmates should maintain or develop professional skills from their work. However, as Sarah T. Roberts \footnote{A professor of information science at the University of California at Los Angeles; appeared on \cite{givenarticle}} says, the job is "rote, menial, and repetitive." Participants cannot learn anything from the task.
+	
+	I strongly doubt the perspective of CSA release saying the job "matches the requirements of modern working life."\cite{csa} If training AI was about coding and modifying network architecture, then yes, it could be an exceptional opportunity for the inmates. However, the fact is that the job is merely a simple classification task. It does not count as a career, nor guarantee further profession. Low wage is all inmates can expect from the menial labor. 
+	
+	Lastly, I think the practice can even negatively affect inmates. There are numerous researches about the effects of repetitive tasks on workers' sense of well-being. Such monotonous works are likely to make workers feel bored and fatigued. I can't imagine myself spending days doing simple classification tasks for several hours. The consequence of such inhumane practice can be catastrophic.  One might lose their sense of humanity and become socially defected. Sarah T. Roberts also claimed that if a university researcher tries to use prisoners as experiment participants, "that would not pass an ethics review board for a study."
+	
+	I'd like to directly quote Anastasia Dedyukhina, the founder of consultancy Consciously Digital: "The ethical way to collect data is to do it in a way that actually improves the customer experience and to explain to them why you are collecting this information," she says. "The next step beyond that is to make it easy for your customers to opt-out of data collection if they want to."\cite{zdnet} I doubt that laboring prisoners are well informed about the purpose of the task. Even if so, they are far from the actual customer of service. It's hard for them to feel their work is of value. They are also not in a position where they can refuse to go on the task. So according to Dedyukhina, training AI as part of prison labor is not an ethical way of collecting data. For the sake of quality and ethical legitimacy of data, Vainu should collect data from their users and volunteers.
+	
+	"Always treat people as ends in themselves, never as means to an end." The infamous quote by Immanuel Kant tells us about how should we treat humanity. While 'training AI' sounds fancy, what lies under is nothing but labor exploitation, deprivation of better opportunity, and indirect abuse towards the inmates. Prisoners are exploited as the means to reduce labor costs, the means for publicity, and the means to maintain order in prison. The corporation and the authority should stop putting their interest over the lives of prisoners. Prisoners deserve a better job, a fair chance to get back on one's feet.
+	
+	\newpage
+	
+	\begin{thebibliography}{9}
+		\bibitem{givenarticle} 
+		Chen, Angela. “Inmates in Finland Are Training AI as Part of Prison Labor.” \textit{The Verge}, The Verge, 28 Mar. 2019, \url{www.theverge.com/2019/3/28/18285572/prison-labor-finland-artificial-intelligence-data-tagging-vainu}.
+		
+		\bibitem{futurism} 
+		Robitzski, Dan. “A Finnish Startup Is Using Prison Labor to Train AI.” \textit{Futurism}, Futurism, 28 Mar. \url{2019, futurism.com/finnish-startup-prison-labor-train-ai}.
+		
+		\bibitem{finland} 
+		Lappi-Seppälä, Tapio. "Imprisonment and penal policy in Finland." \textit{Scandinavian studies in law} 54.2 (2009): 333-380.
+		
+		\bibitem{wiki}
+		“Penal Labor in the United States.” \textit{Wikipedia}, Wikimedia Foundation, 2 Sept. 2019, \url{en.wikipedia.org/wiki/Penal_labor_in_the_United_States}.
+		
+		\bibitem{csa}
+		“Prisoners to Train Artificial Intelligence as Part of Developing Work Activities.” \textit{Criminal Sanctions Agency}, 13 Mar. 2019, \url{www.rikosseuraamus.fi/en/index/topical/pressreleasesandnews/Pressreleasesandnews2019/03/prisonerstotrainartificialintelligenceaspartofdevelopingworkactivities.html}.
+		
+		\bibitem{zdnet}
+		Samuels, Mark. “AI and Big Data vs Ethics: How to Make Sure Your Artificial Intelligence Project Is Heading the Right Way.” \textit{ZDNet}, ZDNet, 2 Apr. 2019,
+		\url{www.zdnet.com/article/ai-and-big-data-vs-ethics-how-to-make-sure-your-\\artificial-intelligence-project-is-heading-the-right-way/}.
+		
+	\end{thebibliography}
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Essay \#1}
+\newcommand{\DueDate}{October 14, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{FLUID: Flexible User Interface Distribution for Ubiquitous Multi-device Interaction}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	
+	The paper presents FLUID, an Android-based platform that offers flexible user interfaces (UIs) distribution for multi-device. In the Introduction, authors emphasize how different FLUID is from other multi-surface applications and screen mirroring applications - what limits the existing approaches share and what FLUID aims to achieve. The demo video of use cases\footnote{Youtube, \href{https://youtu.be/lGO4GwH4enA}{"FLUID: Flexible User Interface Distribution for Ubiquitous Multi-Device Interaction" by KAIST}} helped me comprehend their points. It really appealed to me that FLUID can offer better usability, collaborative use, and privacy protection.
+	
+	I believe the strength of FLUID comes from its flexibility and applicability. I liked how we can designate individual UI components to migrate. Supporting a wide range of UI types was also impressive. The authors assessed their work in various aspects, and the evaluation results look promising too. Although, I’d like to see a performance test results for the case when more than two devices were paired. I doubt if FLUID will work as fluently as it is in such situations.
+	
+	That leads to my concern about using RPC as the cross-device communication method. For collaborative works, one may have to distribute UIs to multiple devices. I was thinking Bluetooth, but it's still not enough if remote devices are involved. The authors also mentioned that they expect to use 5G or 802.11ad in later works.
+	
+	I also have a suggestion regarding the host-guest architecture, once we're going to use the wireless network. I thought it would be much cooler if guest can request for UI migration. On the proposed model, one should receive UI components from the 'main' device, and I believe this somewhat disrupts the user experience. If one can access to multiple hosts by an administrative device or a pre-authorized device by the host, the user can more easily organize the functions they'd like to use. For instance, one can access a television channel controller while using the device as the gaming controller for another tablet device. You can bring UI components from different devices without reaching them.
+	
+	In order to implement such functionality, I think it would be better to establish a controlling server. Device-to-device host-guest architecture is appropriate when two devices are communicating. If we want to make a real multi-surface computing environment, I believe we need to change to the server-client architecture. So that every device has equal functionality to request and allow UI component migration. It will affect performance negatively, but UI response time showed a 2x to 4x outperformance over screen mirroring approach. I think we can compensate for performance with an advanced wireless network.
+	
+	I loved this paper. FLUID can be a versatile platform for the approaching generation of IoT. I was fascinated with Samsung's Smart Things, and I do believe that this research opens a new possibility for so many applications. I'm excited to see the related works and hope to find a proceeding approach similar to mine.
+		
+\end{document}

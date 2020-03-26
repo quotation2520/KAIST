@@ -1,0 +1,139 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework\ \#3}
+\newcommand{\DueDate}{April 2, 2019}
+\newcommand{\Semester}{Spring 2019}
+\newcommand{\Course}{CS380}
+\newcommand{\CourseInstructor}{Prof. Jinah Park}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Introduction to Computer Graphics \\ \hwTitle}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	{\large Describe the following terms with respect to computer graphics.}
+	
+
+	\begin{enumerate}
+		
+		{\large \item Point}
+		
+			\textbf{Point} is one of the fundamental geometric objects. A point indicates only location.  \\
+			
+		{\large \item Affine sum}
+		
+			In an affine space, the addition of two vectors, the multiplication of a vector by a scalar, and the addition of a vector and a point are defined, the addition of two aribitrary points and the multiplication of a point by a scalar are not. 
+			However, we can express point P upon $ \overline{RQ} $ using following equation with latter two operations. We call such operation the ‘\textbf{Affine sum}’\\
+			$ P = \alpha_1 R + \alpha_2 Q $ where $ \alpha_1 + \alpha_2 = 1 $\\
+			
+		{\large \item Convex hull}
+		
+			The \textbf{convex hull} is the set of points formed by the affine sum of n points.
+			$ P = \alpha_1 P_1 + \alpha_2 P_2 + \cdots + \alpha_3 P_3 $ where $ \alpha_1 + \alpha_2 + \cdots + \alpha_n = 1 $, under additional restriction $ \alpha_i \geq 0, i = 1, 2, \cdots, n $\\
+			Geometrically, the convex hull is the set of points that we form by stretching a tight-fitting surface over the given set of points – shrink-wrapping of the points.\\
+			
+		{\large \item Barycentric coordinate}
+		
+			We can express a plane by expressing coordinate of a point in the plane using two nonparallel vectors. Using concept of affine sum, it means a point on a plane can be expressed using three points, not on a single line, of the plane. $ T = \alpha P + \beta Q + \gamma R $ where $ \alpha + \beta + \gamma = 1 $. The representation of a point by ($ \alpha, \beta, \gamma $) is called its \textbf{barycentric coordinates} representation.\\
+			
+		{\large \item Tessellation}
+				
+			Since triangular polygons are always flat, either the modeling system is designed to always produce triangles, or the graphics system provides a method to divide an arbitrary polygon into triangular polygons. We call this division into triangles, \textbf{tessellation}.\\
+			
+		{\large \item CSG (Constructed solid geometry)}
+				
+			\textbf{Constructive solid geometry (CSG)} is the major exception to triangle mesh approximation approach to provide curved objects. In CSG system, we build objects from a small set of volumetric objects through a set of operations such as union and intersection. It is an excellent approach for modelling, but rendering CSG models is more difficult than is rendering surface-based polygonal models.\\
+				
+		{\large \item Homogenous coordinates}
+				
+			Common three-dimensional representation of coordinate can cause confusion between representation of a point and a vector. \textbf{Homogenous coordinates} avoid this difficulty by using a four-dimensional representation for both points and vectors in three dimensions.\\
+			Specified by $ (v_1, v_2, v_3, P_0) $, we can represent a point by $ P = \alpha_1 v_1 + \alpha_2 v_2 + \alpha_3 v_3 + P_0 $. P is then represented by $ (\alpha_1, \alpha_2, \alpha_3, 1) $ In the same frame, a vector can be represented by $ w = \delta_1 v_1 + \delta_2 v_2 + \delta_3v_3 $. W is then represented by $ (\delta_1, \delta_2, \delta_3, 0) $.\\
+			
+		{\large \item Frames (compared to coordinates)}
+				
+			A \textbf{frame} is determined by an origin and basis vectors. Instead of using only basis vectors as in coordinates, notation of a frame allows us to avoid the difficulties caused by vectors having magnitude and direction but no fixed position. We are also able to represent points and vectors in a manner that will allow us to use matrix representations but that maintains a distinction between the two geometric types.\\
+			
+		{\large \item Normalized device coordinates}
+				
+			\textbf{Normalized device coordinates} is a coordinate system occurred during the pipeline, after the clip coordinates are divided by the w component, called perspective division, into three-dimensional representation. The normalized device coordinates later take into account the viewport, and create window coordinates.\\
+			
+		{\large \item Affine transformations}
+				
+			 \textbf{Affine transformations} are the transformation takes place in affine space, homogenous coordinates. Transformation is a linear function that has 12 degrees of freedom. Line is conserved in affine transform so if we want to transform a line segment, we need only to transform the endpoints. Rotation, translation, scaling and shearing are the affine transformations.\\
+			 
+		{\large \item Rigid-body transformation}
+				
+			 \textbf{Rigid-body transformations} are transformations that does not alter the shape or volume of an object, but only the object’s location and orientation. (Rotation and translation)\\
+			 
+		{\large \item Shearing}
+				
+			 Shearing is one of the affine transformations that changes shape of the object, but not its volume. Another affine transformation that is not rigid-body transformation is scaling, which changes volume of the object but not its shape.\\
+			 
+		{\large \item Uniform variables}
+				
+			When we send vertex attributes to a shader, these attributes can be different for each vertex in a primitive. We may also want parameters that will remain the same for all vertices in a primitive or equivalently for all the vertices that are displayed when we execute a function. Such variables are called uniform variables.\\
+			
+		{\large \item Quaternion}
+				
+			Quaternions are an extension of complex numbers that provide an alternative method for describing and manipulating rotations.\\
+			
+		{\large \item Zero vector}
+			
+			\textbf{Zero vector 0} is a vector that satifies $ u + \textbf{0} = u $ for $ \forall u \in V $.\\	
+		
+		{\large \item Basis}
+	
+			If a vector space has dimension $ n $, any set of $ n $ linearly independent vectors form a \textbf{basis}. \\
+			If $ v_1, v_2, \cdots, v_n $ is a basis for V, any vector $ v $ can be expressed uniquely in terms of the basis vectors as $ v = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n $.
+	\end{enumerate}
+\end{document}

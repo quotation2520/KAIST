@@ -1,0 +1,172 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework Assignment\ \#2}
+\newcommand{\DueDate}{April 14, 2019}
+\newcommand{\Semester}{Spring 2019}
+\newcommand{\Course}{CS380}
+\newcommand{\CourseInstructor}{Prof. Jinah Park}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Introduction to Computer Graphics \\ \hwTitle}
+	\author{\textbf{Do you want to build a Snowman?} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\paragraph{}
+	In this document, I will explain how my implementation satisfies the given specifications. I will not copy the code itself, but rather explain in plain text. If you want to see how the actual implementation looks like, please refer to the code lines and comments of attached files. I'll note where to look for each task.
+	
+
+	\section{Background}
+	\paragraph{}	
+	On homework 1, I designed a snowing night scenery with the full moon and the stars. I wanted to reproduce the scenery, but in 3D. The full moon was simply implemented as a yellow sphere. Ground is no longer a rectangle, but A circle normal to y-axis with radius. And I randomly assigned position on my ‘celestial hemisphere’ that covers our ground. The moon is also on this celestial hemisphere, and they rotate around the z-axis with angular velocity of 1 degree per second.
+	
+	3D-rendered snow animation follows similar logistic of the homework 1 implementation - \textit{smooth random translation, remains on ground after fallen} - but with increased degree of freedom. I restricted the snowing area around the snowman, since our flat-earth is quite broad (radius \texttt{100.0f}).
+
+	\begin{flushright}
+		(Please refer to \texttt{Geometry.cpp} and \texttt{Snowflake.cpp})
+	\end{flushright}
+	\section{Snowman}
+	\subsection{Primitives}
+	\begin{minipage}[h]{\linewidth}
+		\begin{wrapfigure}{L}{0.4\linewidth}
+			\begin{subfigure}{0.2\linewidth}
+				\centering
+				\includegraphics[height = 20ex]{HW2_snowman_front.png}
+				\caption{Front}
+				\label{fig:snowman-a}
+			\end{subfigure}
+			\begin{subfigure}{\linewidth}
+				\centering
+				\includegraphics[height = 20ex]{HW2_snowman_back.png}
+				\caption{Back}
+				\label{fig:snowman-b}
+			\end{subfigure}
+			\caption{Snowman}
+			\label{fig:snowman}
+		\end{wrapfigure}
+		
+		\paragraph{}
+		Our next objective is to build a snowman using at least 3 different kinds of objects(primitives) other than cubes. The snowman I built is shown in Figure 1. I composed it with spheres, cones and cylinders.
+		
+		\paragraph{Sphere}
+		I referred to the link on KLMS webpage \cite{spheremesh} and implemented approach using icosahedron. I chose the approach because the article suggested that it shows minimum error. I manually wrote initial 12 vertices and 20 faces, and recursively proceeded subdivision (5 times) for each triangle to create a sphere mesh.
+	\end{minipage}
+	
+	\paragraph{Cone}
+	For given input of height and base radius, I set position of apex, and 100 vertices along the base cicle. Then I created the cone mesh, but did not render the base surface, but rather render both inner and outer surface of the side. This is because I used cone to render the nose and the hat of the snowman, and I needed to show inner surface of the hat.
+	
+	\paragraph{Cylinder}
+	For given input of height and base radius, I set 100 vertices each along the upper and lower circle. I rendered the tube and two circles. 
+	
+	\begin{flushright}
+		(Please refer to \texttt{Geometry.cpp})
+	\end{flushright}
+
+	\subsection{Building the snowman}
+	\paragraph{}
+	My snowman is composed by two spheres, \texttt{body} and \texttt{head}. \texttt{body} is the parent of \texttt{head}.\\
+	\texttt{body} has children - two \texttt{hand} spheres, and a \texttt{belt} cylinder. \texttt{belt} has children of a set of \texttt{load} cylinder.\\
+	\texttt{head} has children - two \texttt{eye} spheres, a \texttt{nose} cone, and a \texttt{hat} object's cone. The \texttt{hat} is composed of a cone, a cylinder, and a sphere; the cylinder and the sphere has the cone as its parent. 
+	
+	Scale, position, and orientation of each object are inidividually set with respect to its parent. I'm pretty sure that the codes in \texttt{main} function and the result will be sufficient explanation of my snowman design.
+	
+	\begin{flushright}
+		(Please refer to \texttt{main.cpp})
+	\end{flushright}
+	
+	\section{Animation}
+	\paragraph{}
+	I tried to implement smooth gaming control of the snowman.
+	
+	You can use WASD or arrows keyboard to move around the snowman. Keyboard input does not make the snowman to move in uniform motion principle, but rather act as applying force towards the direction, so that the snowman will accelerate towards the direction. Snowman also turns its body towards the direction. Press left control to immideatly brake all horizontal movement. If the snowman tries reaches the boundary of the environment, it will respawn at the origin.
+	
+	Pressing space bar will make the snowman to jump, and the snowman will fall smoothly in my custom gravitational field. And yes, double jump is implemented. 
+	
+	You can also change the viewpoint of the camera by placing your cursor to the left/right edge of the window. Keyboard input will follow your viewpoint, so you can always use W key to go forward towards your screen direction. Pressing F key will immediately align your viewpoint to the snowman's viewpoint. 
+	
+	Click the snowman's head to change color of its hat. There are 4 options.
+	
+	If you click anywhere besides the snowman, you can throw a snowball towards the snowman's moving direction. Hold click to throw the snowball further. You have 12 loads, and you should reload the snowballs by pressing R key or clicking the snowman's body. The remaining loads are shown on the belt around the snowman's body.
+	
+	\emph{Maybe Try to hit the moon with your snowball?!}
+	
+	Press H key to see the instructions at the program.
+	
+	\begin{flushright}
+		(Please refer to \texttt{animation.cpp})
+	\end{flushright}
+	
+	
+	\section{Creativity}	
+	\begin{itemize}
+		\item My 3D background is an authentic model of flat-earth celestial sphere model (maybe in the pole area) with constant animation. (Animating background was not mandatory.)
+		
+		\item All my creative implementations of Homework 1 were all implemented in 3D for this assignment too. For example, Each snowflake has an independent, smooth, and natural descending path due to setting random variables on its horizontal motion. Fallen snowflakes will remain on the ground and make a flowerbed. 
+		
+		\item I implemented basic first-person shooter (FPS) gaming physics and logistics, with acceleration and gravity, respawn and reloading system. Camera adjustment was also not mandatory, but was implemented to follow the snowman and change viewpoint with intuitive control.
+		
+		\item I implemented a small easter egg. If you hit the moon with a snowball, the moon will instantly change to red moon and the snow will disappear. You should respawn to undo the process.		
+	\end{itemize} 
+		
+	\begin{thebibliography}{9}
+		\bibitem{spheremesh} 
+		Four Ways to Create a Mesh for a Sphere,
+		\\\texttt{https://medium.com/game-dev-daily/four-ways-to-create-a-mesh-for-a-sphere-d7956b825db4}
+	\end{thebibliography}
+\end{document}

@@ -1,0 +1,127 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\graphicspath{{../}}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Programming Assignment \#3}
+\newcommand{\DueDate}{November 25, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{Activity Recognition}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\begin{figure}[h]
+		\begin{subfigure}{0.24\linewidth}
+			\centering
+			\includegraphics[height = 40ex]{data_collecting.png}
+			\caption{Data collecting}
+		\end{subfigure}
+		\begin{subfigure}{0.24\linewidth}
+			\centering
+			\includegraphics[height = 40ex]{data_collection_complete.png}
+			\caption{Data status}
+		\end{subfigure}
+		\begin{subfigure}{0.24\linewidth}
+			\centering
+			\includegraphics[height = 40ex]{training.png}
+			\caption{Training}
+		\end{subfigure}
+		\begin{subfigure}{0.24\linewidth}
+			\centering
+			\includegraphics[height = 40ex]{testing.png}
+			\caption{Testing}
+		\end{subfigure}
+		\caption{Screenshots of implementation}
+		\label{fig1}
+	\end{figure}
+	
+	\section {What I implemented}
+	\begin{enumerate}
+		\item I made a simple UI similar to the UI design given in tutorial slides. I moved the status message on top of buttons, because I thought it is important to see the status messages while the user handles buttons. 
+		
+		\item For data collecting, I highlighted the current action we are collecting. While collecting an activity data, we cannot push other buttons. A toast message instructs to finish data collecting first.
+		
+		\item Once data collection is complete, the data will be saved as a file in internal storage. The amount of collected data is displayed on status message. If there is a trained model in internal storage, it is also noted.\footnote{I did not use external storage, because I don't have a mobile device with external sdcard. It's a shame that I cannot hand-over files of collected data and trained model, but I was informed that it was optional.}
+		
+		\item Pressing 'Train' button makes a trained model. I utilized Bayesnet for it showed reasonable performance. If there is no data for an activity, toast message informs that there is not enough data. The status message displays the number of instances used for training.
+		
+		\item Pressing 'Test' button will activate sensors and use trained model to recognize action. While testing, no other buttons work. I made status message bigger so that user can read it while performing activities like 'Walk' and 'Jump'.
+		
+		\item While utilizing sensors, the output of each sensor ('A' for accelerometer, 'G' for gyroscope) is visualized on top of the screen. I first added this functionality for debugging purpose, and decided to let it remain there so that users can actually know that sensors are working.
+		
+	\end{enumerate} 
+	\section {How my application works}
+	\begin{enumerate}
+		\item The application utilizes linear acceleration and gyroscope sensor. I set time interval as \texttt{SENSOR\_DELAY\_NORMAL} and assumed that the sensor data are retrived on same time. To extract features, I used 5 consecutive data for each sensor, get L2 norm, and retrieved min, max, mean, (max-min)\footnote{as a term of representing deviation} values. (8 features for an instance.) The features may lose information of direction, but I thought magnitude of change is more relevant feature. The instances are retrieved for each 2 data strides. 
+		
+		\item As I mentioned above, I used Bayesnet as classifier. I emperically found that we need at least about 105 instances (35 instances; 75 lines of data each for action) to acquire some accuracy.
+		
+		\item It works better if actions are highly distinguishable. I assumed user don't move the device while standing; swing arms while walking; and jump vertically.
+	\end{enumerate}
+\end{document}

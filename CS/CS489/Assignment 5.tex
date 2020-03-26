@@ -1,0 +1,145 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Assignment \#5}
+\newcommand{\DueDate}{December 3, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS489}
+\newcommand{\CourseInstructor}{Prof. Shin Yoo}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Question}{Write a 500~1,000 words essay detailing your thoughts about \href{https://en.wikipedia.org/wiki/Basic_income}{universal basic income}. Do thorough background research so that you can back your claim (pro or against) as much as possible.}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Computer Ethics \& Social Issues \\ \hwTitle}
+	\author{\textbf{Universal Basic Income, the Next Economic Paradigm} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\large \textbf {Q. \Question}
+	
+	\vspace{3ex}
+	
+	Since the 18th century, the industrial revolution led to a tremendous leap in economic output. The unprecedented increase in productivity brought us prosperity, but with new social problems too. More recently, rapid technological advance is striking the employment market with many concerns. A study in 2013 estimated that 47\% of all U.S. jobs were at risk of computerization.\cite{employ} Sooner or later, automation will replace the human labor force. Technological change can result in increased economic inequality, a stronger polarisation between capital owners and the labor force.\cite{thomas}
+	
+	We need strategies to cope with the challenges of digitization. As a mean of recurring, unconditional cash transfer, universal basic income (UBI) is perhaps the most discussed form of social security there is.
+	
+	\subsection*{UBI, the Ultimate Welfare Model}
+	
+	There are existing welfare programs, but they often come with a lot of strings attached, lying beneath bureaucracy. UBI is a simple, unconditional mean to eliminate all unnecessaries. Also, existing selective welfare has a severe contradiction, called `the poverty trap.'\cite{trap} Many income-based programs cut off government aids once the person is out of the coverage. If a person in programs takes a job, one might not only lose one's benefits but because of taxes and other costs, end up having less money than before. ``If you are poor, the government is inadvertently ensuring that you have little incentive to try to improve your condition," explains Greg Mankiw.\footnote{the Robert M. Beren Professor of Economics at Harvard University}\cite{mankiw} A basic income, however, doesn't have such side effects. The unconditional support creates a floor instead of a ceiling.
+	
+	In 2018, Facebook co-founder Chris Hughes argued the necessity of UBI. He said, ``cash is the best thing you can do to improve health outcomes, education outcomes and lift people out of poverty."\cite{facebook} Indeed, researchers have evaluated the effect of conditional cash transfers in experimental cases of Africa. Evaluations have documented improvements in a wide range of outcomes, including food security, educational attainment, investment in small businesses, and long-term earnings. Even short-term infusions of capital have significantly improved long-term living standards, psychological well-being, and life expectancy.\cite{kenya}
+	
+	\subsection*{Concerns on Basic Income}
+	
+	There are many concerns regarding basic income too. Some worries unconditional cash transfers might reduce poor households' work effort or make them spend the money they receive on alcohol or tobacco.
+	
+	However, studies say differently. A 2013 study by the World Bank revealed there is no significant (negative) impact of transfers on ``temptation goods" such as alcohol and tobacco.\cite{alcohol} A 2015 study concludes there is no systematic evidence that cash transfer programs discourage work.\cite{lazy} Instead, people strive more actively for a better life. UBI test runs done in Canada in the 1970s showed that 1\% of the recipients stopped working, mostly to take care of their kids. On average, people reduced their working hours by less than 10\% and used the extra time to achieve goals like going back to school or looking for better jobs.\cite{canada}
+	
+	Another concern involves inflation. Since people now have extra money, won't prices rise and make everything just like it was before?
+	
+	Well, we are considering the case of cash transfer, not printing out new funds. The total amount of currency doesn't change. Hence its value remains the same. Of course, the increase in demand for goods and services will trigger prices to rise. But if we think that price is determined by where demand meets supply, it can be resolved with more supplies enabled by automation.
+	
+	Lastly, one may argue that UBI contradicts the foundation of our economy - Capitalism. But such an argument would be a claim by a misconception.
+	
+	UBI helps Capitalism operate more efficiently. UBI doesn't mean all people should have the same income. There will still be rich and poor. The purpose of UBI is to ensure viability, to relieve people from existential panic. People are often bound to jobs they do not desire due to their economic burden. They are capable to do more once they're in less stress. The desire for a better working environment and payment will improve job qualities, hence productivity. One can even start a new enterprise. Each person can function as a ``free market" even better.
+	
+	\subsection*{UBI for All People, The Question is How}\footnote{While I research, I found an inspiring video.\cite{ego}}
+	
+	Elon Musk suspects that UBI might be the single, inevitable countermeasure towards automation.\cite{musk} I do believe so too. UBI is a powerful form of social security. Moreover, it is perhaps `the' economic paradigm for the next generation.
+	
+	It is because UBI is not a policy only for the poor, but for all people. Capitalists might think it's unfair to share their fortune with society. But it is for the greater good. I'm not arguing about the noblesse oblige. It's an investment that brings practical benefits.
+	
+	The logic of the zero-sum game does not apply any longer. We don't have to fight for a pie, but we can make more pies. In the positive-sum world, innovation is what makes a greater value. And such innovations can only be made when people acquire a certain level of living standards and education. UBI enables that social background. As more inventors, engineers, and researchers emerge from recipients, we can expect more mutual growth. There will be more people to share the demands for unsolved problems - such as cancer - which means there will be more investments. The quality of life will improve throughout society. As a piece of evidence, there's a study that claims a guaranteed income of \$1,000 a month for all Americans would accelerate U.S. economic growth by an additional 12.56\% over eight years.\cite{fortune}
+	
+	Enforcing UBI will be a tough challenge. It can only be possible in society with a trusted government, equipped with political $\cdot$ economical feasibility. We should approach UBI with caution. Social agreements should be made for every step of decision; what welfare programs should sustain, how much will be the income, how will we afford it, and so on.  Of course, more verifications should be done thoroughly. But I believe a society capable of enforcing UBI is a healthy society. 
+	
+
+	\begin{thebibliography}{9}
+		\bibitem{employ} Frey, Carl Benedikt, and Michael A. Osborne. "The future of employment: How susceptible are jobs to computerisation?." \textit{Technological forecasting and social change }114 (2017): 254-280.
+		
+		\bibitem{thomas} Straubhaar, Thomas. “On the Economics of a Universal Basic Income.” \textit{Intereconomics - Review of European Economic Policy}, vol. 2017, no. 2, 2009, pp. 74–80, \url{archive.intereconomics.eu/year/2017/2/on-the-economics-of-a-universal-basic-income/}.
+		
+		\bibitem{trap} Wikipedia Contributors. “Welfare Trap.” \textit{Wikipedia}, Wikimedia Foundation, 23 Nov. 2019, \url{en.wikipedia.org/wiki/Welfare_trap}.
+		
+		\bibitem{mankiw} Mankiw, Greg. “Greg Mankiw’s Blog: The Poverty Trap.” \textit{Blogspot.Com}, 2009, \url{gregmankiw.blogspot.com/2009/11/poverty-trap.html}.
+		
+		\bibitem{facebook} Johnson, Eric. “Facebook Co-Founder Chris Hughes Says the 1 Percent Should Give Cash to Working People.” \textit{Vox}, Vox, 14 Mar. 2018, \url{www.vox.com/2018/3/14/17117892/chris-hughes-fair-shot-book-guaranteed-income-one-percent-money-ubi-kara-swisher-decode-podcast}.
+		
+		\bibitem{kenya} “The Effects of a Universal Basic Income in Kenya.” \textit{Innovations for Poverty Action}, 23 Mar. 2018, \url{www.poverty-action.org/study/effects-universal-basic-income-kenya}.‌
+		
+		\bibitem{alcohol} Evans, David K., and Anna Popova. “Cash Transfers and Temptation Goods.” \textit{Economic Development and Cultural Change}, vol. 65, no. 2, Jan. 2017, pp. 189–221, 10.1086/689575.
+		
+		\bibitem{lazy} Banerjee, Abhijit V., et al. “Debunking the Stereotype of the Lazy Welfare Recipient: Evidence from Cash Transfer Programs.” \textit{The World Bank Research Observer}, vol. 32, no. 2, Aug. 2017, pp. 155–184, 10.1093/wbro/lkx002. 
+		
+		\bibitem{canada} Wikipedia Contributors. “Basic Income in Canada.” \textit{Wikipedia}, Wikimedia Foundation, 18 Oct. 2019, \url{en.wikipedia.org/wiki/Basic_income_in_Canada}.
+		
+		\bibitem{musk} Clifford, Cat. “Elon Musk: Robots Will Take Your Jobs, Government Will Have to Pay Your Wage.” \textit{CNBC}, CNBC, 4 Nov. 2016, \url{www.cnbc.com/2016/11/04/elon-musk-robots-will-take-your-jobs-government-will-have-to-pay-your-wage.html}.
+		
+		\bibitem{fortune} Morris, David Z. “Universal Basic Income Could Grow the U.S. Economy by an Extra 12.5\%.” \textit{Fortune}, Fortune, 3 Sept. 2017, \url{fortune.com/2017/09/03/universal-basic-income-economy-study/}.
+		
+		\bibitem{ego}“A Selfish Argument for Making the World a Better Place – Egoistic Altruism.” \textit{YouTube}, 18 Mar. 2018, \url{www.youtube.com/watch?v=rvskMHn0sqQ}.
+		
+		\bibitem{fte}Flowers, Andrew. “What Would Happen If We Just Gave People Money?” \textit{FiveThirtyEight}, FiveThirtyEight, 25 Apr. 2016, \url{fivethirtyeight.com/features/universal-basic-income/}.
+		
+		\bibitem{youtube}“Universal Basic Income Explained – Free Money for Everybody? UBI.” \textit{YouTube}, 7 Dec. 2017, \url{www.youtube.com/watch?v=kl39KHS07Xc}.
+		
+		‌
+	\end{thebibliography}
+\end{document}

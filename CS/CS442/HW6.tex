@@ -1,0 +1,90 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Essay \#6}
+\newcommand{\DueDate}{November 13, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{CrossSense: Towards Cross-Site and Large-Scale WiFi Sensing}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+
+	The paper presents CrossSense, a system for scaling up WiFi sensing to new environments and more extensive sensing problems. The authors proudly show that CrossSense delivers "the best and the most reliable" performance across evaluation scenarios and sensing tasks. It is always thrilling to read state-of-the-art (SOTA) works. I read many SOTA studies in the computer vision (CV) area. It was interesting to learn about the challenges of the mobile sensing field, such as gait identification and gesture recognition. The authors effectively stated their objectives and distinguishable features by assessing the limits of the previous SOTA work, WiWho, and helped me get an overview of CrossSense by comparison.
+	
+	I find the machine learning approach the authors used quite intriguing. Firstly, I was happy to see the transfer learning technique employed in CrossSense. I read a few CV research papers that use transfer learning and always thought highly of the approach. I was impressed once again, observing performance improvement in this paper. Secondly, how the authors generalize domains by adopting the mixture-of-experts approach with roaming models was phenomenal. The methodology was nothing like what I've seen before. It was different from multi-domain or multi-task learning. I would love to take time later and investigate the actual codes of how they generate multiple models and select the expert model.\footnote{I found their Github page. \url{https://github.com/nwuzj/CrossSense}}
+	
+	Aside from the machine learning methodologies, it was interesting to see the wireless signal features they used. In CV, we often shove an image as the input and expect to get some convolutional feature maps, without knowing its meaning. In this paper, however, the authors retrieved statistical, compression, spectrogram, and transformed features from the wireless signal. Those features were selected for reasons; they are the legacy of prior works. It made me think about the collaboration between researchers and the meaning of contribution.
+	
+	This might be irrelevant to the paper, but I also noticed some familiar signal processing techniques like autocorrelation and dynamic time warping (DTW) while reading this paper. I used them when I was at the internship at NAVER Audioplatform. I was glad to see my study in the audio processing area applied to general temporal sequence analysis, and it also reminded me of good memories.
+	
+	In general, I read this paper as a machine learning research than a mobile computing study. Personally speaking, it was more comfortable for me since I'm interested in the subject and there were many friendly terms. I somehow got emotional at some points while reading this paper too.
+	
+	I think this paper is "the" game-changer. The experiment seems reasonable and flawless. The evaluation went thoroughly, following the prior works' criteria, and the results were jaw-dropping. I mean, the performance and reliability showed an immense step up, it was beyond compare.
+	
+	I know no work is perfect, but I couldn't find any evident weakness of this research. Considering the contribution, I choose not to make any nitpicking comment. There were always improvements when a task seems saturated. I expect to see the next 'state-of-the-art.'
+	
+
+\end{document}

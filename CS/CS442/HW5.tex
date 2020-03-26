@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Essay \#5}
+\newcommand{\DueDate}{November 6, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{Liquid Testing with Your Smartphone}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+
+	The paper presents CapCam, the first design that estimates liquid surface tension using only a smartphone, without any specialized hardware. Capcam is also the first mobile app that detects water contamination, measures alcohol concentration, and tracks changes in protein levels in urine.\footnote{The sentences above are direct quotes from the paper.} The performance was remarkable. Capcom shows comparable accuracy with a tensiometer, which costs several thousand dollars and requires expert knowledge.
+	
+	Understanding this paper was very challenging yet intriguing. It requires some background knowledge of Physics and Chemistry. For instance, I was not able to derive the relation between the wavelength of the capillary waves and the surface tension by myself. The authors successfully combined the knowledge of natural science and programming skills and managed to develop an efficient, precise system with a novel approach.
+	
+	I was especially impressed by how they resolved the limitations caused by the hardware. Considering the Doppler effect due to the rolling shutter showed their effort for precision. I liked their approach of finding a vertical radius with reflection symmetry utilizing the wavelet filter. Unstable vibration frequency was also one of my concerns as I read the paper. And I am fully convinced by the way they address the problem.
+	
+	The paper introduces the use cases of this application too. We can utilize Capcam as a water contamination detector, an alcohol concentration measuring system, and a proteinuria biomarker. I believe all the introduced applications are related to our lives.
+	
+	The only thing I'm not fully satisfied with is that we should type in the density of the liquid manually. We cannot estimate the surface tension of an unknown liquid. But I'm probably demanding too much. I can't think of a way to measure the density of a mysterious liquid with only a smartphone. (It seems like we should also type in the distance between the camera and the liquid surface, but the paper says 'the app includes a ruler' so I'm not quite sure.)
+	
+	I genuinely believe that the authors have nailed it with this research. I couldn't find any flaw in this paper. I was excited to see a cheaper, accessible sensor; I agree with their cause. The ideas in problem-solving were reasonable and smart. (It's hard to see a methodology not involving machine learning these days. I was happy to see a relatively classical approach display excellent performance.) The results were inspiring and applicable to daily life. I'm excited to hear what classmates think of this paper! 
+	
+
+\end{document}

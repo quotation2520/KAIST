@@ -1,0 +1,152 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework\ \#5}
+\newcommand{\DueDate}{April 30, 2019}
+\newcommand{\Semester}{Spring 2019}
+\newcommand{\Course}{CS380}
+\newcommand{\CourseInstructor}{Prof. Jinah Park}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Introduction to Computer Graphics \\ \hwTitle}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	{\large Describe the following terms with respect to computer graphics.}
+	\\
+	
+	Interactions between light and materials can be classified into three groups: specular, diffuse, and translucent surface.\\
+	\begin{enumerate}
+		
+		{\large \item Specular surface }
+		
+			\textbf{Specular surfaces} appear shiny because most of the light that is reflected or scattered is in a narrow range of angles close to the angle of reflection. Mirrors are perfectly specular surfaces; the light an incoming light ray may be partially absorbed, but all reflected light from a given angle emerges at a single angle, obeying the rule that the angle of incidence is equal to the angle of reflection.\\
+			
+		{\large \item Diffuse surface}
+		
+			\textbf{Diffuse surfaces} are characterized by reflected light being scattered in all directions. Walls painted with matte or flat paint are diffuse reflectors, as are many natural materials. Perfectly diffuse surfaces scatter light equally in all directions, and thus a flat perfectly diffuse surface appears the same to all viewers.\\
+			
+		{\large \item Translucent surface}
+		
+			\textbf{Translucent surfaces} allow some light to penetrate the surface and to emerge from another location on the object. This process of refraction characterizes glass and water. Some incident light may also be reflected at the surface.\\
+			
+		{\large \item Ambient light}
+		
+			We can postulate an ambient, uniform intensity at each point in the environment. This uniform lighting is called \textbf{ambient light}.\\
+			
+		{\large \item Penumbra}
+			
+			A source of finite size creates shadows. Some areas are fully in shadow, or in the \textbf{umbra}, whereas others are in partial shadow, or in the \textbf{penumbra}.\\
+			
+		{\large \item Phong reflection model}
+				
+			The Phong reflection model has proved to be efficient and to be a close-enough approximation to physical reality to produce good renderings under a variety of lighting conditions and material properties. The Phong model uses four vectors to calculate a color for an arbitary point \textbf{p} on a surface; \textbf{n}, \textbf{v}, \textbf{l}, and \textbf{r}. The vector \textbf{n} is the normal at \textbf{p}. The vector \textbf{v} is in the direction from \textbf{p} to the viewer or COP. The vector \textbf{l} is in the direction of a line from \textbf{p} to an arbitrary point on the source for a distributed light source or, as we are assuming for now, to the point-light source. Finally, the vector \textbf{r} is in the direction that a perfectly reflected ray from \textbf{l} would take. Note that \textbf{r} is determined by \textbf{n} and \textbf{l}.
+			
+			The Phong model supports the three types of material-light interactions; ambient, diffuse, and specular. If we let diffuse term $ L $ and reflection term $ R $, we can represent total intensity $ I = I_a + I_d + I_s = L_a R_a + L_d R_d + L_s R_s $.\\
+		
+		\pagebreak
+		
+		{\large \item A shininess coefficient}
+				
+			The amount of light that theviewer sees depends on the angle $ \phi $ between \textbf{r} and \textbf{v}. THe Phong model uses the equation $I_s = L_s k_s \cos ^ \alpha \phi $. The coefficient $ k_s (0 \ge k_s \ge 1) $ is the fraction of the incoming specular light that is reflected. The exponent $ \alpha $ is \textbf{a shininess coefficient}.\\
+			
+		{\large \item Halfway angle}
+				
+			The \textbf{halfway angle} $ \psi $ is the angle between \textbf{n} and \textbf{h}(halfway vector - the unit vector halfway between the \textbf{v} and \textbf{l}). When \textbf{v} lies in the same plan as do \textbf{l}, \textbf{n}, and \textbf{r}, we can show that $ 2\psi = \phi $\\
+			
+		{\large \item Blinn-Phong model}
+				
+			\textbf{Blinn-Phong model} is the lighting model which uses the halfway vector in the calculation of the specular term. This model is the default in systems with a fixed-function pipeline.\\
+			
+		{\large \item Tangent plane}
+				
+			 The \textbf{tangent plane} gives the local orientation of the surface at a point; we can derive it by taking the linear terms of the Taylor series expansion of the surface at \textbf{p}. The result is that at \textbf{p}, lines in the directions of the vectors represented by \\ $ \dfrac{\partial \textbf{p}}{\partial u} = \begin{bmatrix} \frac{\partial x}{\partial u} \\ \frac{\partial y}{\partial u} \\ \frac{\partial z}{\partial u} \end{bmatrix} $, $ \dfrac{\partial \textbf{p}}{\partial v} = \begin{bmatrix} \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial v} \\ \frac{\partial z}{\partial v} \end{bmatrix} $ \\lie in the tangent plane. We can use their cross product to obtain the normal $ \textbf{n} = \dfrac{\partial \textbf{p}}{\partial u} \times \dfrac{\partial \textbf{p}}{\partial v} $.\\
+			 
+		{\large \item Angle of reflection}
+				
+			 An ideal mirror is characterized by the following statement: \textit{The angle of incidence is equal to the angle of reflection.} The \textbf{angle of incidence} is the angle between the normal and the light source (assumed to be a point source) - angle between \textbf{n} and \textbf{l}. The \textbf{angle of reflection} is the angle between the normal and the direction in which the light is reflected - angle between \textbf{n} and \textbf{r}.\\
+			 
+		{\large \item Flat shading}
+				
+			 If the three vectors \textbf{l}, \textbf{n}, and \textbf{v} are constant, then the shading calculation needs to be carried out only once for each polygon, and each point on the polygon is assigned the same shade. This technique is known as \textbf{flat}, or \textbf{constant}, \textbf{shading}.\\
+			 
+		{\large \item Gouraud shading}
+				
+			Consider a mesh constructed with multiple polygons. Because multiple polygons meet at interior vertices of the mesh, each of which has its own normal, the normal at the vertex is discontinuous. Although this situation might complicate the mathematics, Gourad realized that the normal at the vector could be \textit{defined} in such a way to achieve smoother shading through interpolation. In\textbf{ Gouraud shading}, we determine color of each vertex using their vertex normal. Once smooth shading is enabled, OpenGL interpolates the colors across the faces of the polygons automatically.\\
+			
+		{\large \item Phong shading}
+				
+			Even the smoothness introduced by Gouraud shading may not prevent the appearance of Mach bands. Phong proposed that instead of interpolating vertex intensities, as we do in Gouraud shading, we interpolate normals across each polygon. After we compute vertex normals by interpolating over the normals of the polygons that share the vertex, we can interpolate the normals over the polygon. In terms of the pipeline, \textbf{Phong shading} requires the lighting model be applied to each fragment, hence, the name per-fragment shading.\\
+			
+		{\large \item Mach bands}
+			
+			The human visual system has a remarkable sensitivity to small differences in light intensity, due to a property known as lateral inhibition. If we see an increasing sequence of intensity, we perceive the increases in brightness as overshooting on one side of an intensity step and undershooting on the other. We see stripes, known as \textbf{Mach bands}, along the edges.\\
+		
+		
+		{\large \item Vertex normal}
+		
+			In Gouraud shading, we define the normal at a vertex, or \textbf{vertex normal}, to be the normalized average of the normals of the polygons that share the vertex.\\
+		
+		{\large \item Per-fragment lighting}
+	
+			In order to obtain a smoother shading, we can do the lighting calculation on a per-fragment basis rather than on a per-vertex basis. With a fragment shader, we can do an independent lighting calculation for each fragment. This is called \textbf{per-fragment lighting}.\\
+			
+		
+		{\large \item Nonphotorealistic shading}
+		
+			Programmable shaders make it possible to not only incorporate more realistic lighting models in real time but also to create interesting nonphotorealistic effects. Two such examples are the use of only a few colors and emphasizing the edges in objects. Both these effects are techniques that we might want to use to obtain a cartoonlike effect in an image.\\
+			
+		{\large \item Global lighting model (or global illumination)}
+			
+			Phenomena such as shadows, reflections, blockage of light are global effects and require a \textbf{global lighting model}. By using rendering strategies, including ray tracing and radiosity, we can handle global effects.
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework \#1}
+\newcommand{\DueDate}{November 9, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Question}{Imagine you have no access to mobile computing; no smartphones, no laptops, no wireless networks (LTE, Wi-Fi), etc., for a day. How would your day look like? Could you survive that day? With this imagination and thoughts in mind, write what mobile computing means to you and what you wish to learn from the course.}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\large \textbf {Q. \Question} (Max 500 words)
+	
+	\vspace{3ex}
+	Let’s assume, for a day, that all my mobile devices don’t work. It’s hard to imagine, but I can also easily imagine myself having a disastrous day. First, I won’t get up in time. My alarm clock is embedded in my smartphone, so I’ll probably spend all morning sleeping. I normally check Twitter and news after I’m awake, but since it’s unavailable, I would just stay in bed feeling bored and lethargic.
+	
+	That can be simply the end of the boring, uneventful day. Or I might get out, have some meal and try to make my day meaningful. I usually bring my Bluetooth headphones and my laptop, but I should probably take some paper and a pencil for that day. I like writing poems. It’s a costless, yet creative hobby of mine. I would drop by the school library but finds out that my ID card won’t work.\footnote{The access control system also relies on mobile computing.} I will wander the streets, find a café where I can afford a cup of coffee with my cash.
+	
+	Once I sit down, I’ll try to write some sentences. It’ll be difficult; no music to block all the noises, no laptop to search expressions I wrote from time to time. Writing by hand feels awkward since I’m more familiar with typing now. Despite all the distractions and inconveniences, let’s say I managed to write a piece. I would then notice that I can’t upload the poem on the blog. That’s where I feel miserable. Because I write so that people can read. My work is worthless if it cannot be shared. I’ll feel lost, disconnected. 
+	
+	Today, our lives rely on mobile computing technology greatly. No matter where and when, we use mobile devices to socially relate, get resources and do almost everything. We get support on learning, exercising, and relaxing. The technology has improved the quality of life.
+	
+	Mobile computing does not simply bring convenience to our individual lives, it offers connection. Mobile technology bonds people closer, and help them fulfill their purpose. Distant people share thoughts, feelings, and their works through wireless networks. People can be more influential. We can more easily relate, help those who are in need. And the interaction of people with different fields and locations resonate and make greater effects.
+	
+	I can survive a day without mobile computing, for sure. But if such day becomes days, my life will be so much less effective. Mobile technology helps me. That is why I registered this course – to have a better, effective life. Throughout this course, I want to learn how such technology works and how it is applied to our lives. Ultimately, I wish to become an engineer who use mobile technology to improve my life and the lives of others.
+	
+
+	
+	
+\end{document}

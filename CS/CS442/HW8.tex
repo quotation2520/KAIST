@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Essay \#8}
+\newcommand{\DueDate}{November 20, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{Underwater Backscatter Networking}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	The paper presents Piezo-Acoustic Backscatter (PAB), a novel system that enables underwater networking at near-zero power. On programming assignment 2, we had to utilize an Arduino piezo device, which I thought of it merely as a speaker until today. I learned about the piezoelectric effect from this paper. And I believe PAB is a remarkable application of the piezoelectric effect. This paper proposes a new paradigm for underwater communication. Using acoustic signals instead of radio signals for backscatter was a bold idea. Opening possibilities for battery-free sensors was indeed an inspiring contribution.
+	
+	I also liked the introduced recto-piezo scheme. As an electrical engineering student, I thought the circuit design for PAB was simple and effective. Although, I hope to see future work addressing the tunability problem as the authors also mentioned. Nevertheless, I understand that this is a prototype implementation, and I appreciate what they've done.
+	
+	Despite all the credit I gave, there are some unresolved questions and concerns about this work. I loved their proposal and implementation of the solution, but maybe using acoustic signals is not quite enough. My worries arose from their results.
+	
+	The first concern is about robustness. The authors acknowledged their limitation of not testing in different environments. I believe there can be more interference or noise in real-world situations. Since the communication channel is around 18kHz frequency, it is unlikely to have noises caused by nature. But still, there can be interference either by marine animals or artificial factors. For instance, dolphins use high-frequency sound up to 40kHz to communicate with each other. If there are dolphins nearby, the signals will become corrupted. More generally, we can think of a case where multiple PAB sensors are in an environment. Or even, where there is an obstacle around PAB sensors so that the reflected signal interferes with itself.
+	
+	Another thing that makes this approach doubtful was the performance difference between the results conducted on 'Pool A' and 'Pool B.' Figure 9 in the paper shows that Pool A needs much more transmit power to have an equivalent powering up range with pool B. "This is likely because Pool B is elongated and acts as a corridor, focusing the projector's signal directionally, rather than omnidirectionally as in Pool A," the authors say. In the real world, the environment would be much more like Pool A than Pool B. The paper's claim, that their system has power-up ranges up to 10m, is somewhat overrated. I thought of applying a tube to act as a corridor, but then it would be better to use just a wired sensor instead. I wonder how future works would handle these problems.
+	
+	Once again, I've made some concerning comments, but I honestly believe that this is an innovative piece of work. It has specific motivations and used a brilliant approach to resolve challenges. The authors managed to present a prototype implementation and application examples. I enjoyed reading this paper and hope to see more follow-up studies.
+	
+\end{document}

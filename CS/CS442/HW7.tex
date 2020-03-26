@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Essay \#7}
+\newcommand{\DueDate}{November 18, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{Multi-Stage Receptivity Model for Mobile Just-In-Time Health Intervention}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	The paper presents \textit{BeActive}, a mobile just-in-time (JIT) intervention system for preventing prolonged sedentary behaviors. The authors collected users' responses to the system and investigated relevant contextual factors and cognitive/physical states for perception, availability, adherence, and actual performance.
+	
+	First of all, reading this paper was comparatively challenging. I was overwhelmed by its length before I even started. I often skim some reference papers to help my understanding, but this paper's bibliography went on for five pages. However, the research itself was not that intricate.
+	
+	The paper seemed more like a user study to me. With the designed cognitive procedure model over a JIT intervention prompt, the authors assessed their system's utility. The model itself seemed logical enough. I believe researchers in the field can refer to it for future works. But I think the essence of this paper lies in their experiment, so I'll focus on the experiment procedure and results.
+	
+	I'm not familiar with user studies. I know only briefly about statistics or the ethical procedure of human subject experiments, so note that my opinions can be inappropriate because of my ignorance. To me, the test subjects seemed a little biased. Thirty-one participants, including sixteen students, nine office workers, and five IT developers, are people I see every day. The authors are researchers of KAIST, which I perceive an extraordinary group of people. I'm quite sure that the participants they gathered from the online campus community, faculty mailing list, and Facebook are also people in KAIST. Except for the plastic surgeon, participants spend most of their time in front of a desk. They share similar habits, such as video watching and gaming. I think if we collect data from a group with more diversity, the results may be different. For instance, if the group includes a taxi driver, there will be more responses to the ongoing task of driving. The availability of breaking the sedentary behavior while working would differ in professions. I believe the results may not be that comprehensive as we expect.
+	
+	Also, I find the authors' interpretation a little subjective. The authors excluded some responses that are not 'valid.' In that case, I believe the authors should present information about the remaining subjects and data explicitly so that readers can judge for themselves. The number of responses for some factors was too small to make a conclusion too. For instance, participants located in a vehicle or during driving are one of the most significant cases for JIT interventions, but the number of responses was respectively 48, 29.
+	
+	Because of the concerns I've listed above, I think future researchers can refer to this paper to look for tendency, but should not depend too much on actual numbers. Nevertheless, I find this research worthy of setting guidelines for future works and experimentally discovering the difference between availability and adherence. I think highly of how the authors investigated the gap of reality and expectation for the effectiveness of a system, and am excited to meet them in class.
+	
+	
+\end{document}

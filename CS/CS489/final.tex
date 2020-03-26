@@ -1,0 +1,85 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Individual report}
+\newcommand{\DueDate}{December 20, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS489}
+\newcommand{\CourseInstructor}{Prof. Shin Yoo}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Computer Ethics \& Social Issues \\ \hwTitle}
+	\author{\textbf{Forus, a New Platform for Reasonable Debating} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	\vspace{3ex}
+
+	\section{My Contribution}
+	\paragraph{Problem setting} I came up with the first idea of the project. Minsu and I elaborated on the details together.
+	
+	\paragraph{PHP/HTML implementation}	I did most of the implementation work of the website. It was my first experience of front-end development, and I had to study from elementary HTML/PHP usage to adapting Bootstrap resources. Minsu participated in writing a part of 'about' webpage, which is written only in HTML.
+	
+	\paragraph{Server and DB managing} I also studied database and web server managing. I operated my personal computer as the web server, and designed the DB table and attached PHP functions on them.
+	
+	\paragraph{Survey data colection} I asked classmates and friends to participate in the survey.
+	
+	\paragraph{Report and Presentation} I designed and edited most of the documents. 
+	
+	\section{Teammate Evaluation }
+	\textbf{Minsu Kim:  6 / 10}
+	
+	I'm sorry to say, but he lacks enthusiasm and effort. It was hard enough to do the project as a two-people team, but it felt like I was doing it alone. There was some dispute about the aim we're going to focus on, and he was reluctant of doing any programming workloads, saying that he had no experience of front-end developing. But it held the same to me too. If he had suggested a better option, I would have chosen not to do all the work by myself. I struggled a few nights with implementations and preparing presentations, and he was not helping. He did not meet deadlines or standards most of the time. There were countable features we could have (or should have) implemented for the demo website. For instance, editing or removing opinions features, the account registration menu, etc. Knowing that our result is not the best we could have done, I feel ashamed and sorry.
+	
+	However, he prepared the survey form and gathered some participants after the final presentation. He actively participated in discussions. Therefore, I give him a score of 6 points out of 10.
+\end{document}

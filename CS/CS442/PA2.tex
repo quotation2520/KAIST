@@ -1,0 +1,120 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\graphicspath{{../}}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Programming Assignment \#2}
+\newcommand{\DueDate}{November 4, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS442}
+\newcommand{\CourseInstructor}{Prof. Sung-Ju Lee}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Paper}{Inaudible Sound Communication}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Mobile Computing, Networking \& Applications \\ \hwTitle \\ \Large{\textbf{\Paper}}}
+	\author{\StudentID \ \AuthorName ~(Kit ID 106)}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\section {How to run the code}
+		\begin{enumerate}
+			\item Place the receiver (smartphone) near the sender (Arduino piezo).
+			
+			\item run the Android application (20160042\_pa2.apk).
+			
+			\item run the Arduino program (20160042\_pa2.ino).
+				
+		\end{enumerate} 
+	
+	Figure 1 below shows video captures of a execution video. (full video \href{https://drive.google.com/open?id=18sw071Ir5FIps4iVe5HaV0JRRkcyZaLN}{here})
+	
+	\begin{figure}[h]
+		\begin{subfigure}[c]{0.3\linewidth}
+			\centering
+			\includegraphics[height = 50ex]{PA2_7.jpg}
+			\caption{7sec}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.3\linewidth}
+			\centering
+			\includegraphics[height = 50ex]{PA2_8.jpg}
+			\caption{8sec}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.3\linewidth}
+			\centering
+			\includegraphics[height = 50ex]{PA2.jpg}
+			\caption{9sec}
+		\end{subfigure}
+		\caption{Video captures with 1 second interval}
+		\label{fig1}
+	\end{figure}
+
+\newpage
+	
+	\section {Difficulties on implementation}
+	
+	Implementing the Arduino program was relatively simple. I used String(\_, BIN) function for FSM decoding. I padded zeros to make each ASCII character represented as a byte (8 bits). 
+	
+	Where I struggled was at the Android programming. The main difficulty was to read, process, and print in real-time. I tried to use a while-loop to handle AudioRecord, but it seems to make UI stops (because the processor gets busy?). Then I read some references using Thread \footnote{\url{https://codetravel.tistory.com/2}} \footnote{\url{https://codeday.me/ko/qa/20190314/58461.html}}, but wasn't able to find the usage in Kotlin. I just figured it out to utilize an AsyncTask we learned from the PA1. I let the while-loop to run in the background and used onProgressUpdate function to update the textview.
+	
+	Another thing I put effort into was to make my system more stable. We need to detect either silence or 19~21kHz sound from our receiver. My initial implementation checked silence by checking whether the maximum amplitude of the segment is higher than a set threshold. Also, I returned the most occurring frequency and see if it's whether 19, 20, or 21 kHz. However, this implementation didn't work well in a noisy environment. So I just observed the dominance in the 19~21kHz frequency zone. I named pow 19 as the sum of FFT result for range 18.5kHz~19.5kHz and so on, and compared pow19, pow20, and pow 21. If the power of one frequency is not higher than the addition of the other two, we let it silence. I could empirically see the result improved.
+\end{document}

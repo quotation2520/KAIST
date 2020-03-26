@@ -1,0 +1,195 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework Assignment\ \#4}
+\newcommand{\DueDate}{June 14, 2019}
+\newcommand{\Semester}{Spring 2019}
+\newcommand{\Course}{CS380}
+\newcommand{\CourseInstructor}{Prof. Jinah Park}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Introduction to Computer Graphics \\ \hwTitle}
+	\author{\textbf{Make Your Own Scene with Texture Mapping} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\paragraph{}
+	In this document, I will explain how my implementation satisfies the given specifications. I will not copy the code itself, but rather explain in plain text. If you want to see how the actual implementation looks like, please refer to the code lines and comments of attached files.
+	
+	The assignment is handed 2 days late (15\% off).
+
+	\section{Texture mapping}
+	
+	\subsection{Object}
+	
+	\paragraph{}
+	I found a .obj format model of an asteroid from \href{www.turbosquid.com}{turbosquid}. The file (\texttt{A2.obj}) was constructed of 1 mesh, and thankfully the author also provided various textures  (including normal map) for the mesh.
+		
+	However, The textures didn't wrap the asteroid as it should be, so I tried to apply some transformation on the given texture images. It turned out that I should have flipped the image upside down.
+
+	\subsection{Skybox}
+	
+	I found a beautiful skybox of cosmos from \href{https://opengameart.org/content/space-skyboxes-0}{opengameart}. I had to modify \texttt{GenerateCube} function in \texttt{Geometry.cpp} in order to make backside of skybox to face inward.
+
+	
+	\begin{flushright}
+		(Please refer to \texttt{main.cpp} and \texttt{Geometry.cpp})
+	\end{flushright}
+
+	\begin{figure}[h]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height = 35ex]{HW4_diffuse.png}
+			\caption{Asteroid object with albedo texture}
+			\label{fig:diffuse}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height = 35ex]{HW4_skybox.png}
+			\caption{Skybox}
+			\label{fig:skybox}
+		\end{subfigure}
+		\caption{Used object and textures}
+		\label{fig:shader}
+	\end{figure}	
+
+	\section{Normal mapping}
+	
+	I got lots of help from \cite{normal_map} implementing normal mapping. The idea of normal mapping is to decode normal vector information from rgb value of the normal map(blueish image), and adjust fragment normal vectors towards it. We mostly handle normal mapping in fragment shader. We modify vertex shader by the mean to keep track of tangent vector for each vertices in order to align normal map with our fragment. Skeleton code already stores tangent vectors on layout(location=3), so we can just bring it from vertex shader and hand over to fragment shader in clip-space.
+	
+	I used the provided normal map.	This is the result.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height = 35ex]{HW4_normal_raw.png}
+		\caption{Normal mapping applied}
+		\label{fig:normal}
+	\end{figure}	
+
+	\subsection{Extra: Metal texture (for Creativity point)}\label{creativity}
+	
+	I found out that there are much more options to make my object look better when there are more textures are given. I first struggled to implement parallax mapping \cite{parallax_mapping} using the provided displacement texture, but was not able to accomplish it. However, I was able to successfully apply metal texture on my asteroid object so that the metallic part would act like a specular material. I differenciated the reflectance for each asteroid, so it seems as if they are covered with different types of gems.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height = 35ex]{HW4_normal.png}
+		\caption{Metal texture applied}
+		\label{fig:metal}
+	\end{figure}
+
+	\begin{flushright}
+		(Please refer to \texttt{NormalMaterial.cpp} and \texttt{NormalVertex(Fragment)Shader.glsl})
+	\end{flushright}
+	
+	\pagebreak
+	\section{Shadow mapping}
+	
+	I should probably confess in advance, that I \textit{failed} to implement shadow mapping. But I took a lot of effort, and I kept most of the codes in my submission. I would be very grateful if you generously read the attatched codes and description below and see if I can get any partial points on this criteria. Also, I hope to get a feedback on what I've been missing.
+	
+	My implementation is based on nice tutorial from \cite{shadow_mapping}.
+	
+	\begin{enumerate}
+		
+		\item I initialized the shadow map following similar scheme of \texttt{picking.hpp} on \texttt{ShadowMap.hpp}. We can bind the framebuffer object and texture on this procedure, and since we are keeping the depth information in texture, we do not have to create or bind any render buffer object.
+		
+		\item I made \texttt{ShadowVertexShader} to render the shadow map. The input is orthogonal projection matrix from light source's view (\texttt{depthMVP}), and it was calculated every frame for objects and lights may be updated. I used \texttt{ShadowMaterial.cpp(.hpp)} to hand over the values towards shaders.
+		
+		\item The second pass of my main loop of \texttt{main.cpp} describes how my depth map is updated and binded to other material shaders. (I commented the binding of textuer map on object rendering, since it somehow interferred metal texture.)
+		
+		\item I modified other materials to also hand over the same \texttt{depthMVP} matrix towards its shader. In fragment shaders (See \texttt{Normal(diffuse)FragmentShader.glsl}), Shadow calculation was conducted by comparing depth value with the value in depthmap. 		
+	\end{enumerate}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height = 35ex]{HW4_debug.png}
+		\caption{Debugging by RenderDoc showed that my depth map was not created properly.}
+		\label{fig:metal}
+	\end{figure}
+	While debugging with RenderDoc, I found out that my depth map was not created right. I predict my error is probably in procedure 1 or 2, but I could not resolve the errors in time.
+	
+	I feel really sorry and frustrating that I was not able to find where I got wrong, even with the helping hand from the TAs. But I'd like to thank TA JH Cho for kindly answering my questions, even on late weekend hours. 
+	 
+	\section{Creativity}	
+	\begin{itemize}
+		\item As I mentioned in \ref{creativity}, I implemented another lighting model using texture. (regarding the creativity Point criteria 4.1 of the assignment document.)
+		
+		\item Though object animation was not mandatory, I implemented simple object animations to make my scenery look more alive. The asteroids have its own (and random) momentum and rotation. You can press 'p' to pause animation.
+		
+		\item You can explore the scenery using WASD (Q, E to go up and down) and arrow keys. (little gimbal lock problem regarding the orientation.) 
+		
+		\item I think my scenery was very appropriate the theme of this assignment. I created scenery of universe, to emphasize the infiniteness we can achieve via skybox, with asteroids, to emphasize the rocky texture we can achieve via normal map. If I implemented the shadow mapping properly, the interactions of how shadows cover each other would have been magnificiant. 
+	\end{itemize}
+
+	\begin{thebibliography}{9}
+		\bibitem{normal_map} 
+		Normal Mapping,
+		\texttt{https://learnopengl.com/Advanced-Lighting/Normal-Mapping}
+		\bibitem{parallax_mapping}
+		Parallax Mapping,
+		\texttt{https://learnopengl.com/Advanced-Lighting/Parallax-Mapping}
+		\bibitem{shadow_mapping}
+		Shadow Mapping,
+		\texttt{https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping}
+	\end{thebibliography}
+\end{document}

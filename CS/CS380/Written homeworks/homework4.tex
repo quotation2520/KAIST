@@ -1,0 +1,151 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework\ \#4}
+\newcommand{\DueDate}{April 9, 2019}
+\newcommand{\Semester}{Spring 2019}
+\newcommand{\Course}{CS380}
+\newcommand{\CourseInstructor}{Prof. Jinah Park}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Introduction to Computer Graphics \\ \hwTitle}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	{\large Describe the following terms with respect to computer graphics.}
+	
+
+	\begin{enumerate}
+		
+		{\large \item Multiview orthographic projection }
+		
+			In a \textbf{Multiview orthographic projection}, we make multiple projections, in each case with the projection plane parallel to one of the principal faces of the object. \\
+			
+		{\large \item Isometric views}
+		
+			If the projection plane is placed symmetrically with respect to the three principal faces that meet at a corner of our rectangular object, we have an \textbf{isometric view}. \\
+			
+		{\large \item Vanishing point}
+		
+			In classical perspective views, usually known as one-, two-, and three-point perspectives, parallel lines in each of the three principal directions converges to one, two, and three \textbf{vanishing point}(s).\\
+			
+		{\large \item Camera coordinates}
+		
+			The position in the camera frame is stored in \textbf{camera coordinates}. \\
+			
+		{\large \item Normalization transformation}
+				
+			\textbf{Normalization transformation} is a part of the viewing process which determines the type of image that we wish to obtain – perspective or parallel – by specifying the projection matrix.\\
+			
+		{\large \item vup vector}
+				
+			\textbf{VUP (view-up) vector} specifies what direction is up from the camera’s perspective. \\
+				
+		{\large \item vpn vector}
+				
+			\textbf{VPN (view-plane normal) vector} gives the orientation of the projection plane or back of the camera. \\
+			
+		{\large \item Parallel viewing }
+				
+			A \textbf{parallel projection} is the limit of a perspective projection I which the center of projection is infinitely far from the objects being viewed, resulting in projectors that are parallel rather than converging at the center of projection.\\
+			
+		{\large \item Canonical view volume}
+				
+			In projection normalization, we can design the normalization matrix so that view volume is distorted into the \textbf{canonical view volume}, which is the cube defined by the plain $ x \pm 1, y \pm 1, z \pm 1 $. The canonical view volume also simplifies the clipping process because the sides are aligned with the coordinate axes.\\
+			
+		{\large \item Oblique projection}
+				
+			 An \textbf{oblique projection} can be characterized by the angle that the projectors make with the projection plane. \\
+			 
+		{\large \item Perspective division}
+				
+			 We usually handle three dimensions $ (x, y, z) $ in transformation, but we may allow $ w $ to change in order to represent a larger class of transformations, including perspective projections. However, we must perform a \textbf{perspective division} (dividing coordinate by its $ w $ component) at the end.\\
+			 
+		{\large \item Perspective normalization}
+				
+			 \textbf{Perspective-normalization} transformation converts a perspective projection to an orthogonal projection.\\
+			 
+		{\large \item Hidden-surface algorithm}
+				
+			\textbf{Hidden-surface-removal algorithms }remove those surfaces that should not be visible to the viewer.\\
+			
+		{\large \item Visible-surface algorithm}
+				
+			Visible-surface algorithms find which surfaces are visible.\\
+			
+		{\large \item z-buffer algorithm}
+			
+			\textbf{z-buffer algorithm} is an OpenGL algorithm that selects surfaces to display.\\	
+		
+		{\large \item Object-space algorithm}
+	
+			\textbf{Object-space algorithms} are broad approach of hidden-surface-removal algorithms which attempt to order the surfaces of the objects in the scene such that rendering surfaces in a particular order provides the correct image.\\
+			
+		
+		{\large \item Image-space algorithm}
+		
+			\textbf{Image-space algorithms} work as part of the projection process and seek to determine the relationship among object points on each projector. The z-buffer algorithm is one of the Image-space algorithms.\\
+			
+		{\large \item Culling}
+			
+			For a convex object, the rasterizer eliminates faces whose normal point away from the viewer. This elimination process is called \textbf{culling}.\\	
+			
+		{\large \item Polygon offset}
+			
+			If we draw both a polygon and a line loop, each triangle is rendered twice in the same plane, onece filled and once by its edges. Even though the second rendering of just the edges is done with filled rendering, numerical inaccuracies in the renderer often cause parts of second rendering to lie behind the corresponding fragment in the first rendering. We can avoid this problem by enabling the \textbf{polygon offset} mode and setting the offset parameters. Polygon fill offset moves fragments slightly away from the viewer, so all the desired lines should be visible.\\
+			
+			
+		{\large \item Shadow polygon}
+			
+			A \textbf{Shadow polygon} is the projection of the original polygon onto the surface. With the center of projection at the light source.\\
+	\end{enumerate}
+\end{document}

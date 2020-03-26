@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Homework\ \#1}
+\newcommand{\DueDate}{March 12, 2019}
+\newcommand{\Semester}{Spring 2019}
+\newcommand{\Course}{CS380}
+\newcommand{\CourseInstructor}{Prof. Jinah Park}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Introduction to Computer Graphics \\ \hwTitle}
+	\author{\StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	{\large Describe the following terms with respect to computer graphics.}
+	
+	\begin{enumerate}
+		
+		{\large \item Frame buffer}
+			\paragraph{Frame buffer} is a part of memory where the pixels are stored in. The number of pixels in the frame buffer is called \emph{resolution}, and the number of bits that are used for each pixel is called \emph{depth} (or \emph{precision}).
+			\\
+				
+		{\large \item True-color}
+			\paragraph{True-color} systems (a.k.a \emph{full-color} systems or \emph{RGB-color} systems) assign 24 (or more) bits per pixel to display realistic images with sufficient colors. Individual groups of bits in each pixel are assigned to each of the three primary colors - red, green, and blue.\\
+			 	
+		{\large \item Rasterization}
+			 \paragraph{Rasterization} (or \emph{scan conversion}) is the conversion of geometric entities to pixel colors and locations in the frame buffer.\\
+			 
+		{\large \item GPU}
+			 \paragraph{GPU (Graphics processing unit)} is a custom-tailored special-purpose processing unit that carries out specific graphics function.\\
+			 
+		{\large \item Logical device}
+			\paragraph{Logical device} interpretes the logical behavior of an input device from inside the application program; the measurement and the timing the input device returns.\\
+			 
+		{\large \item Callback function}
+			\paragraph{Callback function} is a specific type of event used to obtain the measure of a device. The operating system queries or polls the event queue regularly and executes the callbacks corresponding to events in the queue. This approach associating callback function has proved effective in client-server environments and is currently used with the major window systems.\\
+			
+		{\large \item Point source}
+			\paragraph{Point source} is one of the light source model in geometric optics that emits energy from a signle location at one or more frequencies equally in all directions.\\
+			
+		\pagebreak
+		
+		{\large \item Field of view}
+			\paragraph{Field of view} of a camera is the angle made by the largest object that the camera can image on its film plane.\\
+			
+		{\large \item Depth of field}
+			\paragraph{Depth of field} is the distance between the nearest and the furthest object that are in acceptably sharp focus. An ideal pinhole camera has an infinite depth of field: Every point within its field of view is in focus.\\
+			
+		{\large \item API}
+			\paragraph{API (Application programming interface)} is a set of functions that resides in a graphics library, which specifies the interface between an application program and a graphics system. \\
+			
+		{\large \item Wireframe}
+			\paragraph{Wireframe} is a type of rendered image that shows only the outlines of the parts (the edges of surfaces).\\
+		
+		{\large \item Display list}
+			\paragraph{Display list} is memory of a display processor where the instructions to generate the image is stored in.\\
+			
+		{\large \item Clipping volume}
+			\paragraph{Clipping volume} is amount of space visible through a camera due to its field of view. Only the projections of objects in this volume appear in the image.\\
+			
+		{\large \item Fragments}
+			\paragraph{Fragments} are the output of the rasterizer. A fragment is a potential pixel that carries with its information, including its color and location, that is used to update the corresponding pixel in the frame buffer. Fragments also carry along depth information that allows later stages to determine if a particular fragment lies behind other previously rasterized fragments for a given pixel. \\
+			
+		{\large \item One-point perspective}
+			\paragraph{One-point perspective} is the case when parallel lines in one direction of the cube converge to a single vanishing point in the image. \\
+	\end{enumerate}
+\end{document}

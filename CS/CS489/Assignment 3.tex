@@ -1,0 +1,96 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kotex}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=blue,
+}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage[english]{babel}
+\graphicspath{{../}}
+
+%% Page Layout %%
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\setlength{\parskip}{1.5ex}
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hwTitle}{Assignment \#3}
+\newcommand{\DueDate}{October 22, 2019}
+\newcommand{\Semester}{Fall 2019}
+\newcommand{\Course}{CS489}
+\newcommand{\CourseInstructor}{Prof. Shin Yoo}
+\newcommand{\AuthorName}{Inyong Koo}
+\newcommand{\StudentID}{20160042}
+
+\newcommand{\Question}{Some people think that computer scientists should take what corresponds to \href{https://en.wikipedia.org/wiki/Hippocratic_Oath}{Hippocratic oath} that physicians take: you can read about the argument \href{https://www.theguardian.com/science/2019/aug/16/mathematicians-need-doctor-style-hippocratic-oath-says-academic-hannah-fry?CMP=Share_iOSApp_Other}{here}. Your assignment is to draft your own version of such an oath.}
+
+%% Headnote, footnote %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{\StudentID \, \AuthorName}
+\lhead{\Semester}
+\chead{\Course \, \hwTitle}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancypagestyle{titlepagestyle}
+{
+	\fancyhf{}
+	\rhead{Due date: \DueDate}
+	\lhead{\Semester}
+	\cfoot{\thepage}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	\title{\vspace{-7ex}\Course \, Computer Ethics \& Social Issues \\ \hwTitle}
+	\author{\textbf{My Oath as a Computer Scientist} \\\\ \StudentID \ \AuthorName}
+	\date{\hrule}
+	%\date{}  % Toggle commenting to test
+	
+	\maketitle
+	
+	\thispagestyle{titlepagestyle}
+	
+	\large \textbf {Q. \Question}
+	
+	\vspace{3ex}
+	
+	 
+	As a computer scientist and an engineer,
+	
+	I solemnly pledge to vigorously push forward the frontiers of science and seek application of good cause.
+	
+	I will research with dignity; I will never yield regarding truth. I will construct my work upon concrete logic and reliable data. I will not violate human rights or and civil liberty during any research procedure. 
+	
+	I will respect my colleagues; I will respect their intellect and accomplishment. I will actively collaborate with my colleagues and clearly state their contribution.
+	
+	I will retain humanity. The purpose of my profession is to benefit people's lives. I will always consider the people beneath the numbers and abstractions. The people who get benefit from my work, and more importantly, the people who may get harmed. I will make efforts so that the benefit of my work goes to all people. 
+	
+	I will be responsible with my work. I will not let my work used on immoral practice. I will maintain and update my work consistently. I will share my works as openly as possible, yet firmly secure the private information and industrial properties.
+	
+	I make these promises solemnly, freely and upon my honor.
+	
+	
+	\footnotetext{I borrowed expressions from \href{https://en.wikipedia.org/wiki/Declaration_of_Geneva}{declaration of Geneva}, the modern acknowledgement of Hippocratic oath.}
+\end{document}
